@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(rosaria2)
+project(rosaria)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
@@ -35,7 +35,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 # test binary
-add_executable(run_${PROJECT_NAME} src/test.cpp src/rosaria2_node.cpp src/laser_publisher.cpp)
+add_executable(run_${PROJECT_NAME} src/test.cpp src/rosaria_node.cpp src/laser_publisher.cpp)
 target_include_directories(run_${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
