@@ -35,25 +35,25 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 # test binary
-add_executable(rosaria src/test.cpp src/rosaria2_node.cpp src/laser_publisher.cpp) #TODO: Test if i can remove test.cpp without breaking things
-target_include_directories(rosaria
+add_executable($run_${PROJECT_NAME} src/test.cpp src/rosaria2_node.cpp src/laser_publisher.cpp)
+target_include_directories($run_${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<BUILD_INTERFACE:/usr/local/include/Aria>
     $<INSTALL_INTERFACE:include>)
 
-target_link_libraries(rosaria Aria)
-# target_link_libraries(rosaria /usr/local/lib/libAria.so)
-ament_target_dependencies(rosaria rclcpp geometry_msgs std_msgs sensor_msgs nav_msgs std_srvs tf2 tf2_ros tf2_geometry_msgs)
+target_link_libraries($run_${PROJECT_NAME} Aria)
+# target_link_libraries($run_${PROJECT_NAME} /usr/local/lib/libAria.so)
+ament_target_dependencies($run_${PROJECT_NAME} rclcpp geometry_msgs std_msgs sensor_msgs nav_msgs std_srvs tf2 tf2_ros tf2_geometry_msgs)
 
 # declare generated messages as dependencies to force generation before compilation
 # cf. https://discourse.ros.org/t/ros2-how-to-use-custom-message-in-project-where-its-declared/2071
-rosidl_target_interfaces(rosaria rosaria "rosidl_typesupport_cpp")
+rosidl_target_interfaces($run_${PROJECT_NAME} ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 # install target
 install(TARGETS
-  rosaria
-  DESTINATION lib/rosaria)
+  $run_${PROJECT_NAME}
+  DESTINATION lib/${PROJECT_NAME})
 
 
 if(BUILD_TESTING)
