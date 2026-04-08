@@ -28,7 +28,7 @@
 #include <sensor_msgs/point_cloud_conversion.hpp>     // can optionally publish sonar as new type pointcloud2
 #include <tf2_ros/transform_listener.h>
 #include <tf2_ros/transform_broadcaster.h>
-#include "rosaria2/msg/bumper_state.hpp"
+#include "rosaria/msg/bumper_state.hpp"
 #include "laser_publisher.hpp"
 #include "dynamic_parameter.hpp"
 
@@ -146,9 +146,9 @@ class RosAria2Node : public rclcpp::Node {
     //--------------------------------------------------------------------------
     /// @brief      Constructs a new instance.
     ///
-    /// @param[in]  name  Name to attribute the node. Defaults to 'rosaria2'
+    /// @param[in]  name  Name to attribute the node. Defaults to 'rosaria'
     ///
-    RosAria2Node(const std::string& name = "rosaria2");
+    RosAria2Node(const std::string& name = "rosaria");
 
     //--------------------------------------------------------------------------
     /// @brief      Destroys the object.
@@ -232,7 +232,7 @@ class RosAria2Node : public rclcpp::Node {
     std_msgs::msg::Bool motors_state;
 
     rclcpp::Publisher< nav_msgs::msg::Odometry >::SharedPtr pose_pub;
-    rclcpp::Publisher< rosaria2::msg::BumperState >::SharedPtr bumpers_pub;
+    rclcpp::Publisher< rosaria::msg::BumperState >::SharedPtr bumpers_pub;
     rclcpp::Publisher< sensor_msgs::msg::PointCloud >::SharedPtr sonar_pub;  // old type -> remove
     rclcpp::Publisher< sensor_msgs::msg::PointCloud2 >::SharedPtr sonar_pointcloud2_pub;
     rclcpp::Publisher< std_msgs::msg::Float64 >::SharedPtr voltage_pub;
@@ -257,7 +257,7 @@ class RosAria2Node : public rclcpp::Node {
 
     nav_msgs::msg::Odometry position;
 
-    rosaria2::msg::BumperState bumpers;
+    rosaria::msg::BumperState bumpers;
 
     //for odom->base_link transform
     std::unique_ptr< tf2_ros::TransformBroadcaster > odom_broadcaster;

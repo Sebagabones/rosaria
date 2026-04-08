@@ -28,7 +28,7 @@
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
-#include "rosaria2/rosaria2_node.hpp"
+#include "rosaria/rosaria_node.hpp"
 
 
 using namespace std::chrono_literals;  // for ""ms literal
@@ -73,7 +73,7 @@ RosAria2Node::RosAria2Node(const std::string& name) :
         // avertise publishers
         // @note about latching in ROS2 cf. https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html#comparison-to-ros-1
         pose_pub = this->create_publisher< nav_msgs::msg::Odometry >("pose", 1000);
-        bumpers_pub = this->create_publisher< rosaria2::msg::BumperState >("bumper_state", 1000);
+        bumpers_pub = this->create_publisher< rosaria::msg::BumperState >("bumper_state", 1000);
         sonar_pub = this->create_publisher< sensor_msgs::msg::PointCloud >("sonar", 50);
         sonar_pointcloud2_pub = this->create_publisher< sensor_msgs::msg::PointCloud2 >("sonar_pointcloud2", 50);
         voltage_pub = this->create_publisher< std_msgs::msg::Float64 >("battery_voltage", 1000);

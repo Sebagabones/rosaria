@@ -1,5 +1,5 @@
 #include <rclcpp/rclcpp.hpp>
-#include "rosaria2/rosaria2_node.hpp"
+#include "rosaria/rosaria_node.hpp"
 
 int main(int argc, char const *argv[]) {
 
